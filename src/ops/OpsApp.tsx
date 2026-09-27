@@ -538,8 +538,7 @@ export default function OpsApp() {
               <h3>Train on simulated decisions</h3>
               <p>
                 A fine-tuned adapter returned the expected action labels on nine
-                held-out examples. This is a format-adaptation test; Jev
-                controls the live deliveries.
+                held-out examples. This tests the required action format. Jev controls the simulated deliveries.
               </p>
               <button
                 className="ops-btn quiet"
