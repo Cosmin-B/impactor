@@ -5,7 +5,7 @@ status: draft, needs Cosmin's rewrite pass before publication
 ## Spoken script
 
 I work on physical AI: simulation and ground-truth rendering for robots, drones and autonomous vehicles.
-My day is C++ engines and GPU kernels, tuned to specific hardware, sensors and customer workloads.
+My day is C++ engines and GPU kernels across hundreds of environments, including lidar and radar, tuned to each customer's hardware and workload.
 
 Every change raises the same question: which results still apply, and what needs checking again?
 
