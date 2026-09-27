@@ -175,6 +175,17 @@ export default function OpsApp() {
       : undefined;
   const observed = runCurrent && !forecastCurrent ? run?.plan : undefined;
   const contracts = memoryContracts(state?.relationships || [], world);
+  const supported = contracts.filter(
+    (r) => r.applicability === "supported_here",
+  ).length;
+  const needsRetest = contracts.length - supported;
+  const contextChanges = (r: Relationship) =>
+    (Object.keys(r.context) as Array<keyof OpsWorld>)
+      .filter(
+        (key) =>
+          key !== "paint" && key !== r.factor && r.context[key] !== world[key],
+      )
+      .map((key) => `${FACTOR_NAMES[key]}: ${r.context[key]} → ${world[key]}`);
   const variants = selectVariants(state?.variants || [], world, goal);
   const disabled = Boolean(busy || playing);
   async function act(action: "forecast" | "run" | "learn" | "session") {
@@ -204,6 +215,7 @@ export default function OpsApp() {
       setState(next);
       if (action === "run") setPlaying(true);
       if (action === "learn") {
+        setActiveRelation(null);
         setTab("relationships");
         setNotice(
           "Nine factors tested. Results saved and recalled from GBrain.",
@@ -234,7 +246,8 @@ export default function OpsApp() {
           <span>✳</span>Impactor<span className="version">OPERATIONS LAB</span>
         </a>
         <nav>
-          <a href="/workplace">Workplace · 3–100 agents</a><a href="/bridge">The first experiment</a>
+          <a href="/workplace">Workplace · 3–100 agents</a>
+          <a href="/bridge">The first experiment</a>
           <span className="network-light" />
           Goal → decisions → consequences
         </nav>
@@ -429,7 +442,65 @@ export default function OpsApp() {
             </p>
           </aside>
         </div>
-        <section className="ops-evidence">
+        <section
+          className="reuse-summary"
+          aria-label="Memory applicability"
+          aria-live="polite"
+        >
+          <div className="reuse-question">
+            <p className="eyebrow">Before the next decision</p>
+            <h2>Can I still use this result?</h2>
+            <p>
+              {contracts.length
+                ? "The observations stay in memory. Only matching experiment contexts inform the forecast."
+                : "Run Find relationships, then change a condition to see which experiment contexts still match."}
+            </p>
+          </div>
+          <div className="reuse-counts">
+            <div>
+              <strong>{supported}</strong>
+              <span>factors with matching context</span>
+            </div>
+            <div className={needsRetest ? "needs-retest" : ""}>
+              <strong>{needsRetest}</strong>
+              <span>factors needing retest</span>
+            </div>
+            <div>
+              <strong>{9 - contracts.length}</strong>
+              <span>untested factors</span>
+            </div>
+          </div>
+          <div className="reuse-actions">
+            <button
+              className="ops-btn secondary"
+              disabled={disabled || !contracts.length}
+              onClick={() =>
+                change("paint", world.paint === "teal" ? "coral" : "teal")
+              }
+            >
+              Change only paint
+            </button>
+            <button
+              className="ops-btn secondary"
+              disabled={disabled || !contracts.length}
+              onClick={() => change("payload", world.payload === 1.7 ? 1 : 1.7)}
+            >
+              Change parcel weight
+            </button>
+            <button
+              className="ops-btn quiet"
+              onClick={() => {
+                setTab("memory");
+                document
+                  .getElementById("shift-results")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            >
+              Show why <ChevronRight size={14} />
+            </button>
+          </div>
+        </section>
+        <section className="ops-evidence" id="shift-results">
           <div className="evidence-top">
             <div>
               <p className="eyebrow">Shift results</p>
@@ -613,6 +684,12 @@ export default function OpsApp() {
                         return (
                           <path
                             key={`${r.factor}-${effect}`}
+                            className={
+                              contracts.find((c) => c.factor === r.factor)
+                                ?.applicability === "needs_retest"
+                                ? "stale-link"
+                                : ""
+                            }
                             d={`M280 ${24 + i * 45} C355 ${24 + i * 45} 340 ${55 + j * 100} 415 ${55 + j * 100}`}
                           />
                         );
@@ -636,7 +713,13 @@ export default function OpsApp() {
                     ).map((r: any) => (
                       <button
                         onClick={() => "measured" in r && setActiveRelation(r)}
-                        className={r.affects.length ? "has-link" : "unproven"}
+                        className={
+                          (r.affects.length ? "has-link" : "unproven") +
+                          (contracts.find((c) => c.factor === r.factor)
+                            ?.applicability === "needs_retest"
+                            ? " stale-factor"
+                            : "")
+                        }
                         key={r.factor}
                       >
                         <i />
@@ -644,9 +727,12 @@ export default function OpsApp() {
                         <small>
                           {r.source === "unknown"
                             ? "untested"
-                            : r.affects.length
-                              ? `${r.affects.length} links`
-                              : "no effect observed"}
+                            : contracts.find((c) => c.factor === r.factor)
+                                  ?.applicability === "needs_retest"
+                              ? "context changed"
+                              : r.affects.length
+                                ? `${r.affects.length} links`
+                                : "no effect observed"}
                         </small>
                       </button>
                     ))}
@@ -794,6 +880,12 @@ export default function OpsApp() {
                             : "Retest in this context"}
                         </b>
                         <p>{r.measured}</p>
+                        {contextChanges(r).length > 0 && (
+                          <p className="context-diff">
+                            <strong>What changed</strong>
+                            {contextChanges(r).join(" · ")}
+                          </p>
+                        )}
                         {r.policy && (
                           <small>
                             Tested strategy: {POLICY_NAMES[r.policy]}.{" "}
