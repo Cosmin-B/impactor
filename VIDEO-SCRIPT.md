@@ -4,30 +4,32 @@ status: draft, needs Cosmin's rewrite pass before publication
 
 ## Spoken script
 
-I work on physical AI: simulation and ground-truth rendering for robots, drones and autonomous vehicles.
-My day is C++ engines and GPU kernels across hundreds of environments, including lidar and radar, tuned to each customer's hardware and workload.
+I work on physical AI: C++ simulation engines and ground-truth rendering for robots, drones and autonomous vehicles.
+I tune GPU kernels and sensor simulation to specific hardware and customer workloads.
 
-Every change raises the same question: which results still apply, and what needs checking again?
+Large products accumulate thousands of decisions from experiments and field experience. Tests encode some of that knowledge. When something changes, people still have to reconstruct why those tests were sufficient and whether they remain sufficient.
 
-I built Impactor to make that visible through delivery robots dealing with rain, heavy cargo and limited battery.
+Impactor explores that problem in a delivery world.
 
-I extended GBrain with experiments that carry their conditions. Before reusing a result, Impactor checks whether those conditions still match.
+I added conditions to the experiments stored in GBrain, and execution branches around Memorable's procedures: what ran, under which conditions, and what happened.
 
-Around Memorable's procedures, I added execution branches: each shift's conditions, actions and outcomes. A fresh agent retrieves that experience without reconstructing the investigation.
+Change the cargo and the graph shows which experiments need retesting. A fresh agent recalls the saved experiments and procedure branches.
 
-Change paint and the contexts still match. Change cargo and the graph shows which experiments need retesting.
+Jev selects the plan. The adapter I trained with River chooses corrections from simulated preflight checks.
 
-Jev selects the plan. The adapter I fine-tuned with River now chooses dispatch corrections from simulated preflight checks, and those actions change what the robots do.
+The larger goal is to help humans and agents preserve the reasoning behind validation, then turn what they've learned into reliable automated checks.
 
 ## Screen sequence
 
 - 0-13 seconds: Delivery world and physical-AI background.
-- 13-24 seconds: Rain, cargo and battery controls.
-- 24-37 seconds: Conditional memory and GBrain's experiment conditions.
-- 37-48 seconds: Procedure branches and Fresh agent.
-- 48-55 seconds: Change only paint, then change parcel weight.
-- 55-65 seconds: Select River · fine-tuned, then show a completed shift's Dispatch decisions and River training results.
+- 13-28 seconds: Keep the world visible while explaining the accumulated decisions behind validation. Orbit gently.
+- 28-41 seconds: Conditional memory, experiment conditions and procedure branches.
+- 41-49 seconds: Change parcel weight and Show why. Do not click Fresh agent yet; it clears the current shift history.
+- 49-57 seconds: Dispatch decisions, with Jev's plan and the actual River actions.
+- 57-65 seconds: Return to the graph. Optionally click Fresh agent after showing the River results.
 
-About 60-65 seconds at a natural pace. For a shorter take, omit the second background sentence. Run the River shift before recording its results; six requests took about 27 seconds in the verified storm run, followed by the animation.
+About 60-65 seconds at a natural pace. Prepare the completed River shift before recording; inference happens before the animation. See RECORDING-CLICKS.md for preparation.
 
-Verified on the public app: six River checkpoint decisions applied, six of six deliveries completed, one on time. That run is a demonstration of integration, not proof of broad policy quality. Inference runs on River GPUs through a small authenticated local relay. Keep the relay and tunnel running during the demo.
+The company-scale motivation comes from Cosmin's description of his work. The prototype demonstrates scoped experiments and procedure execution history in a synthetic delivery world. It does not yet reconstruct a company's design rationale or prove that a test suite is sufficient.
+
+Verified public integration: six River decisions applied, six of six deliveries completed, one on time. River inference uses a small authenticated local relay. Keep that relay and tunnel running during the demo.
