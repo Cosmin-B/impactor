@@ -1,0 +1,144 @@
+{
+  "status": "complete",
+  "baseModel": "Qwen/Qwen3.6-35B-A3B-FP8",
+  "trainCount": 27,
+  "heldoutCount": 9,
+  "steps": [
+    {
+      "step": 1,
+      "loss": 29.745713975694443
+    },
+    {
+      "step": 2,
+      "loss": 16.56744158709491
+    },
+    {
+      "step": 3,
+      "loss": 3.5896595142505787
+    },
+    {
+      "step": 4,
+      "loss": 0.41228181344491466
+    },
+    {
+      "step": 5,
+      "loss": 0.06763853850188078
+    },
+    {
+      "step": 6,
+      "loss": 0.005305678756148727
+    },
+    {
+      "step": 7,
+      "loss": 0.0006038921850698966
+    },
+    {
+      "step": 8,
+      "loss": 0.000024349601180465134
+    },
+    {
+      "step": 9,
+      "loss": 0.000004794862535264757
+    },
+    {
+      "step": 10,
+      "loss": 0.0000020000669691297744
+    },
+    {
+      "step": 11,
+      "loss": 0.0000014746630633318866
+    },
+    {
+      "step": 12,
+      "loss": 0.0000016203633061161749
+    }
+  ],
+  "before": {
+    "correct": 0,
+    "total": 9,
+    "rows": [
+      {
+        "expected": "normal",
+        "generated": ""
+      },
+      {
+        "expected": "normal",
+        "generated": ""
+      },
+      {
+        "expected": "normal",
+        "generated": ""
+      },
+      {
+        "expected": "charge",
+        "generated": ""
+      },
+      {
+        "expected": "charge",
+        "generated": ""
+      },
+      {
+        "expected": "charge",
+        "generated": ""
+      },
+      {
+        "expected": "detour",
+        "generated": ""
+      },
+      {
+        "expected": "detour",
+        "generated": ""
+      },
+      {
+        "expected": "detour",
+        "generated": ""
+      }
+    ]
+  },
+  "after": {
+    "correct": 9,
+    "total": 9,
+    "rows": [
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      }
+    ]
+  },
+  "elapsedSeconds": 290,
+  "method": "Greedy decoding, 12-token limit, newline stop. Exact action match on nine held-out synthetic cases.",
+  "task": "Choose a corrective dispatch action after seeing the simulator outcome for the normal route.",
+  "limitations": "The baseline produced empty replies under this completion format. This measures adaptation to a narrow response protocol, not a general reasoning gain. With a 32-token limit and no newline stop on the same nine held-out prompts, the saved checkpoint returned 9/9 exact actions. The base began reasoning or explanatory text within that limit. Jev remains the live controller."
+}

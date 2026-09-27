@@ -1,0 +1,105 @@
+{
+  "verifiedAt": "2026-09-27T22:16:47.060Z",
+  "observations": [
+    {
+      "name": "Baseline",
+      "outcome": "delivered",
+      "route": "bridge",
+      "selected": [],
+      "reused": [
+        "load",
+        "route",
+        "destination"
+      ],
+      "stale": false,
+      "procedureUsed": false
+    },
+    {
+      "name": "Missing dependency",
+      "outcome": "fell",
+      "route": "bridge",
+      "selected": [],
+      "reused": [
+        "load",
+        "route",
+        "destination"
+      ],
+      "stale": true,
+      "procedureUsed": false
+    },
+    {
+      "name": "Unchanged retry after teaching",
+      "outcome": "delivered",
+      "route": "detour",
+      "selected": [
+        "load"
+      ],
+      "reused": [
+        "route",
+        "destination"
+      ],
+      "stale": false,
+      "procedureUsed": true,
+      "procedureSaved": true,
+      "procedureMessage": "Real run stored and recalled through Memorable."
+    },
+    {
+      "name": "Fresh agent, unseen values",
+      "outcome": "delivered",
+      "route": "detour",
+      "selected": [
+        "load"
+      ],
+      "reused": [
+        "route",
+        "destination"
+      ],
+      "stale": false,
+      "procedureUsed": true
+    },
+    {
+      "name": "Cosmetic edit",
+      "outcome": "delivered",
+      "route": "detour",
+      "selected": [],
+      "reused": [
+        "load",
+        "route",
+        "destination"
+      ],
+      "stale": false,
+      "procedureUsed": false
+    },
+    {
+      "name": "Light parcel uses bridge",
+      "outcome": "delivered",
+      "route": "bridge",
+      "selected": [
+        "load"
+      ],
+      "reused": [
+        "route",
+        "destination"
+      ],
+      "stale": false,
+      "procedureUsed": true
+    },
+    {
+      "name": "Weakened bridge",
+      "outcome": "delivered",
+      "route": "detour",
+      "selected": [
+        "load"
+      ],
+      "reused": [
+        "route",
+        "destination"
+      ],
+      "stale": false,
+      "procedureUsed": true
+    }
+  ],
+  "exportVerified": true,
+  "inputValidationVerified": true,
+  "sameOriginVerified": true
+}

@@ -1,0 +1,582 @@
+{
+  "train": [
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":2.4,\"battery_pct\":35,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 0.6,
+        "battery": 35,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":3.6,\"battery_pct\":55,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 0.9,
+        "battery": 55,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":6.4,\"battery_pct\":35,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 1.6,
+        "battery": 35,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":2.4,\"battery_pct\":55,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 0.6,
+        "battery": 55,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":3.6,\"battery_pct\":95,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 0.9,
+        "battery": 95,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":7.6,\"battery_pct\":75,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 1.9,
+        "battery": 75,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":3.6,\"battery_pct\":75,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 0.9,
+        "battery": 75,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":7.6,\"battery_pct\":75,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 1.9,
+        "battery": 75,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":3.6,\"battery_pct\":75,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 0.9,
+        "battery": 75,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":2.4,\"battery_pct\":20,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 25% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 0.6,
+        "battery": 20,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":6.4,\"battery_pct\":20,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 29% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 1.6,
+        "battery": 20,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":3.6,\"battery_pct\":20,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 31% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 0.9,
+        "battery": 20,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":2.4,\"battery_pct\":20,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 36% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 0.6,
+        "battery": 20,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":3.6,\"battery_pct\":20,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 38% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 0.9,
+        "battery": 20,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":6.4,\"battery_pct\":20,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 43% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 1.6,
+        "battery": 20,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":2.4,\"battery_pct\":35,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 41% battery; robot has 35%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 0.6,
+        "battery": 35,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":3.6,\"battery_pct\":35,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 43% battery; robot has 35%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 0.9,
+        "battery": 35,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":7.6,\"battery_pct\":20,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 51% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 1.9,
+        "battery": 20,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":4.8,\"battery_pct\":55,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"4.8 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 1.2,
+        "battery": 55,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":6.4,\"battery_pct\":75,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"6.4 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 1.6,
+        "battery": 75,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":0,\"parcel_kg\":7.6,\"battery_pct\":55,\"bridge_capacity_kg\":6,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"7.6 kg exceeds the 6 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 0,
+        "payload": 1.9,
+        "battery": 55,
+        "bridgeLimit": 6,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":4.8,\"battery_pct\":55,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"4.8 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 1.2,
+        "battery": 55,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":6.4,\"battery_pct\":75,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"6.4 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 1.6,
+        "battery": 75,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":20,\"parcel_kg\":7.6,\"battery_pct\":55,\"bridge_capacity_kg\":6,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"7.6 kg exceeds the 6 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 20,
+        "payload": 1.9,
+        "battery": 55,
+        "bridgeLimit": 6,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":4.8,\"battery_pct\":75,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"4.8 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 1.2,
+        "battery": 75,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":45,\"parcel_kg\":6.4,\"battery_pct\":95,\"bridge_capacity_kg\":6,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"6.4 kg exceeds the 6 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 45,
+        "payload": 1.6,
+        "battery": 95,
+        "bridgeLimit": 6,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":4.8,\"battery_pct\":75,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"4.8 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 1.2,
+        "battery": 75,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    }
+  ],
+  "test": [
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":7.6,\"battery_pct\":75,\"bridge_capacity_kg\":8,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 1.9,
+        "battery": 75,
+        "bridgeLimit": 8,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":3.6,\"battery_pct\":75,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 0.9,
+        "battery": 75,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":7.6,\"battery_pct\":95,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"delivered\",\"normal_reason\":\"Arrived with a valid load and enough charge.\"}\nAction:",
+      "completion": "normal",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 1.9,
+        "battery": 95,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":3.6,\"battery_pct\":20,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 48% battery; robot has 20%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 0.9,
+        "battery": 20,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":4.8,\"battery_pct\":35,\"bridge_capacity_kg\":6,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 51% battery; robot has 35%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 1.2,
+        "battery": 35,
+        "bridgeLimit": 6,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":7.6,\"battery_pct\":55,\"bridge_capacity_kg\":12,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"stranded\",\"normal_reason\":\"Trip requires 57% battery; robot has 55%.\"}\nAction:",
+      "completion": "charge",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 1.9,
+        "battery": 55,
+        "bridgeLimit": 12,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":65,\"parcel_kg\":6.4,\"battery_pct\":95,\"bridge_capacity_kg\":6,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"6.4 kg exceeds the 6 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 65,
+        "payload": 1.6,
+        "battery": 95,
+        "bridgeLimit": 6,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":4.8,\"battery_pct\":75,\"bridge_capacity_kg\":4,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"4.8 kg exceeds the 4 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 1.2,
+        "battery": 75,
+        "bridgeLimit": 4,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    },
+    {
+      "prompt": "Choose the next robot dispatch action: normal, charge, or detour. Deliver safely, then minimize arrival time. Charge adds 11 minutes. Detour avoids the bridge.\nState: {\"rain_pct\":85,\"parcel_kg\":7.6,\"battery_pct\":95,\"bridge_capacity_kg\":6,\"planned_route\":[\"depot\",\"west\",\"east\",\"cafe\"],\"normal_outcome\":\"overload\",\"normal_reason\":\"7.6 kg exceeds the 6 kg bridge limit.\"}\nAction:",
+      "completion": "detour",
+      "world": {
+        "agents": 3,
+        "rain": 85,
+        "payload": 1.9,
+        "battery": 95,
+        "bridgeLimit": 6,
+        "traffic": 1.1,
+        "deadline": 1,
+        "liftClosed": false,
+        "paint": "coral"
+      },
+      "source": "Computed outcomes for three interventions in the Impactor simulator"
+    }
+  ]
+}

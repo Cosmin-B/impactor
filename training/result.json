@@ -1,0 +1,156 @@
+{
+  "base_model": "Qwen/Qwen3.6-35B-A3B-FP8",
+  "started_at": 1790549004.1506119,
+  "train_count": 27,
+  "heldout_count": 9,
+  "steps": [
+    {
+      "step": 1,
+      "loss": 29.745713975694443,
+      "at": 1790549106.694026
+    },
+    {
+      "step": 2,
+      "loss": 16.56744158709491,
+      "at": 1790549121.966778
+    },
+    {
+      "step": 3,
+      "loss": 3.5896595142505787,
+      "at": 1790549135.672097
+    },
+    {
+      "step": 4,
+      "loss": 0.41228181344491466,
+      "at": 1790549149.215324
+    },
+    {
+      "step": 5,
+      "loss": 0.06763853850188078,
+      "at": 1790549162.3874838
+    },
+    {
+      "step": 6,
+      "loss": 0.005305678756148727,
+      "at": 1790549185.02824
+    },
+    {
+      "step": 7,
+      "loss": 0.0006038921850698966,
+      "at": 1790549199.332412
+    },
+    {
+      "step": 8,
+      "loss": 2.4349601180465134e-05,
+      "at": 1790549212.707408
+    },
+    {
+      "step": 9,
+      "loss": 4.794862535264757e-06,
+      "at": 1790549225.855047
+    },
+    {
+      "step": 10,
+      "loss": 2.0000669691297744e-06,
+      "at": 1790549238.8592331
+    },
+    {
+      "step": 11,
+      "loss": 1.4746630633318866e-06,
+      "at": 1790549261.6204429
+    },
+    {
+      "step": 12,
+      "loss": 1.6203633061161749e-06,
+      "at": 1790549274.888708
+    }
+  ],
+  "status": "complete",
+  "model_id": "a9896024-d671-4c70-bc63-17724aa4c649:model:1",
+  "before": {
+    "correct": 0,
+    "total": 9,
+    "rows": [
+      {
+        "expected": "normal",
+        "generated": ""
+      },
+      {
+        "expected": "normal",
+        "generated": ""
+      },
+      {
+        "expected": "normal",
+        "generated": ""
+      },
+      {
+        "expected": "charge",
+        "generated": ""
+      },
+      {
+        "expected": "charge",
+        "generated": ""
+      },
+      {
+        "expected": "charge",
+        "generated": ""
+      },
+      {
+        "expected": "detour",
+        "generated": ""
+      },
+      {
+        "expected": "detour",
+        "generated": ""
+      },
+      {
+        "expected": "detour",
+        "generated": ""
+      }
+    ]
+  },
+  "checkpoint": "river://42fedf9a-edfd-44ec-a56b-9c6500af4142/sampler_weights/impactor-dispatch-v1",
+  "after": {
+    "correct": 9,
+    "total": 9,
+    "rows": [
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      }
+    ]
+  },
+  "finished_at": 1790549294.092507
+}

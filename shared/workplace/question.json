@@ -1,0 +1,12 @@
+{
+  "action": {
+    "type": "choice",
+    "instructions": "Choose the smallest next step that makes the prior conclusion usable for the current goal. Reuse only when all relevant conditions match and required sources are current. A changed dependency needs its focused check rerun. Expired source information needs refreshing before drawing a new conclusion. Unresolved authoritative contradictions or missing required facts need human clarification. Prefer clarification over other actions when both are needed. Prefer rerunning the check over refresh when a known dependency changed. Cosmetic changes alone do not invalidate a result.",
+    "criteria": {
+      "reuse": "Reuse the prior conclusion; its conditions still hold.",
+      "refresh": "Refresh expired source information, then reassess.",
+      "retest": "Rerun the focused check for the changed dependency.",
+      "escalate": "Request the missing fact or resolve conflicting authoritative evidence."
+    }
+  }
+}

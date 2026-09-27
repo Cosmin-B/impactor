@@ -1,0 +1,855 @@
+{
+  "schemaVersion": 1,
+  "product": "Impactor",
+  "source": "Anonymous synthetic simulation",
+  "exportedAt": "2026-09-27T22:16:47.056Z",
+  "world": {
+    "packageMass": 4,
+    "bridgeCapacity": 3,
+    "bridgeColor": "teal"
+  },
+  "impactMap": [
+    {
+      "id": "package-mass-load",
+      "field": "packageMass",
+      "check": "load",
+      "source": "gbrain",
+      "reason": "When the package mass changes, recheck the bridge load before reusing an earlier crossing result.",
+      "provenance": "Human correction in this synthetic robot experiment. Note: Load evidence depends on the parcel weight.",
+      "createdAt": "2026-09-27T22:16:32.325Z"
+    }
+  ],
+  "baselineRules": [
+    {
+      "id": "baseline-capacity-load",
+      "field": "bridgeCapacity",
+      "check": "load",
+      "reason": "A changed bridge capacity requires a new load check.",
+      "source": "baseline",
+      "provenance": "Built-in dependency supplied with the initial controller.",
+      "createdAt": "1970-01-01T00:00:00.000Z"
+    }
+  ],
+  "receipts": {
+    "load": {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:4:load",
+      "checkId": "load",
+      "label": "Bridge load",
+      "passed": false,
+      "world": {
+        "packageMass": 4,
+        "bridgeCapacity": 3,
+        "bridgeColor": "teal"
+      },
+      "inputHash": "8504121360cf17c2482b0ff64070ebd0216daf9fc5b200526303013c24a830ec",
+      "createdAt": "2026-09-27T22:16:46.601Z",
+      "checkVersion": "load-v1",
+      "details": "4 kg package exceeds the 3 kg bridge capacity."
+    },
+    "route": {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:route",
+      "checkId": "route",
+      "label": "Route continuity",
+      "passed": true,
+      "world": {
+        "packageMass": 2,
+        "bridgeCapacity": 6,
+        "bridgeColor": "coral"
+      },
+      "inputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2",
+      "createdAt": "2026-09-27T22:16:40.381Z",
+      "checkVersion": "route-v1",
+      "details": "Both the bridge and detour connect the dock to the depot."
+    },
+    "destination": {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:destination",
+      "checkId": "destination",
+      "label": "Destination match",
+      "passed": true,
+      "world": {
+        "packageMass": 2,
+        "bridgeCapacity": 6,
+        "bridgeColor": "coral"
+      },
+      "inputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a",
+      "createdAt": "2026-09-27T22:16:40.381Z",
+      "checkVersion": "destination-v1",
+      "details": "Parcel destination \u201cdepot\u201d matches station \u201cdepot\u201d."
+    }
+  },
+  "runs": [
+    {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:1",
+      "agentId": "adcbba0c-eb60-40ba-b805-55b52053ae60",
+      "world": {
+        "packageMass": 10.5,
+        "bridgeCapacity": 7.5,
+        "bridgeColor": "coral"
+      },
+      "previousWorld": {
+        "packageMass": 2,
+        "bridgeCapacity": 6,
+        "bridgeColor": "coral"
+      },
+      "plan": {
+        "changedFields": [
+          "packageMass",
+          "bridgeCapacity"
+        ],
+        "selectedChecks": [
+          "load"
+        ],
+        "reusedChecks": [
+          "route",
+          "destination"
+        ],
+        "matchedRules": [
+          {
+            "id": "baseline-capacity-load",
+            "field": "bridgeCapacity",
+            "check": "load",
+            "reason": "A changed bridge capacity requires a new load check.",
+            "source": "baseline",
+            "provenance": "Built-in dependency supplied with the initial controller.",
+            "createdAt": "1970-01-01T00:00:00.000Z"
+          },
+          {
+            "id": "package-mass-load",
+            "field": "packageMass",
+            "check": "load",
+            "source": "gbrain",
+            "reason": "When the package mass changes, recheck the bridge load before reusing an earlier crossing result.",
+            "provenance": "Human correction in this synthetic robot experiment. Note: Load evidence depends on the parcel weight.",
+            "createdAt": "2026-09-27T22:16:32.325Z"
+          }
+        ],
+        "explanation": "Recheck bridge load; reuse 2 other receipts."
+      },
+      "checks": [
+        {
+          "checkId": "load",
+          "label": "Bridge load",
+          "status": "ran",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:1:load",
+            "checkId": "load",
+            "label": "Bridge load",
+            "passed": false,
+            "world": {
+              "packageMass": 10.5,
+              "bridgeCapacity": 7.5,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "b1aa4371b8148283fc116a4759b5ab1ba653f08cb03210634775176151b5e0d3",
+            "createdAt": "2026-09-27T22:16:42.166Z",
+            "checkVersion": "load-v1",
+            "details": "10.5 kg package exceeds the 7.5 kg bridge capacity."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "b1aa4371b8148283fc116a4759b5ab1ba653f08cb03210634775176151b5e0d3"
+        },
+        {
+          "checkId": "route",
+          "label": "Route continuity",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:route",
+            "checkId": "route",
+            "label": "Route continuity",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "route-v1",
+            "details": "Both the bridge and detour connect the dock to the depot."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2"
+        },
+        {
+          "checkId": "destination",
+          "label": "Destination match",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:destination",
+            "checkId": "destination",
+            "label": "Destination match",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "destination-v1",
+            "details": "Parcel destination \u201cdepot\u201d matches station \u201cdepot\u201d."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a"
+        }
+      ],
+      "route": "detour",
+      "outcome": "delivered",
+      "explanation": "The load receipt rejects the bridge. The connected detour delivers the 10.5 kg package safely.",
+      "memoryUsed": [
+        {
+          "id": "baseline-capacity-load",
+          "field": "bridgeCapacity",
+          "check": "load",
+          "reason": "A changed bridge capacity requires a new load check.",
+          "source": "baseline",
+          "provenance": "Built-in dependency supplied with the initial controller.",
+          "createdAt": "1970-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "package-mass-load",
+          "field": "packageMass",
+          "check": "load",
+          "source": "gbrain",
+          "reason": "When the package mass changes, recheck the bridge load before reusing an earlier crossing result.",
+          "provenance": "Human correction in this synthetic robot experiment. Note: Load evidence depends on the parcel weight.",
+          "createdAt": "2026-09-27T22:16:32.325Z"
+        }
+      ],
+      "createdAt": "2026-09-27T22:16:42.166Z",
+      "staleEvidence": false,
+      "environment": {
+        "bridgeHeld": false,
+        "actualLoad": 10.5,
+        "capacity": 7.5
+      },
+      "procedureMemory": {
+        "slug": "procedures/1c1d3bf5-recheck-simulated-delivery-route-with-new-load",
+        "title": "Recheck simulated delivery route with new load",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs check-load --dir .data/verification"
+          },
+          {
+            "seq": 2,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs choose-route --dir .data/verification"
+          },
+          {
+            "seq": 3,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs simulate-delivery --dir .data/verification"
+          },
+          {
+            "seq": 4,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs verify-run --dir .data/verification"
+          }
+        ],
+        "postconditions": [
+          "node scripts/sim-step.mjs verify-run --dir .data/verification"
+        ],
+        "source": "memorable"
+      },
+      "procedureUsed": true,
+      "procedureSteps": [
+        {
+          "seq": 1,
+          "action": "shell",
+          "handler": "check_load",
+          "status": "executed",
+          "result": "10.5 kg package exceeds the 7.5 kg bridge capacity."
+        },
+        {
+          "seq": 2,
+          "action": "shell",
+          "handler": "choose_route",
+          "status": "executed",
+          "result": "Chose detour from the available check receipts."
+        },
+        {
+          "seq": 3,
+          "action": "shell",
+          "handler": "simulate_delivery",
+          "status": "executed",
+          "result": "Observed outcome: delivered."
+        },
+        {
+          "seq": 4,
+          "action": "shell",
+          "handler": "verify_delivery",
+          "status": "executed",
+          "result": "Verified observed outcome: delivered."
+        }
+      ],
+      "independentVerification": {
+        "passed": true,
+        "steps": 4
+      }
+    },
+    {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:2",
+      "agentId": "adcbba0c-eb60-40ba-b805-55b52053ae60",
+      "world": {
+        "packageMass": 10.5,
+        "bridgeCapacity": 7.5,
+        "bridgeColor": "teal"
+      },
+      "previousWorld": {
+        "packageMass": 10.5,
+        "bridgeCapacity": 7.5,
+        "bridgeColor": "coral"
+      },
+      "plan": {
+        "changedFields": [
+          "bridgeColor"
+        ],
+        "selectedChecks": [],
+        "reusedChecks": [
+          "load",
+          "route",
+          "destination"
+        ],
+        "matchedRules": [],
+        "explanation": "The active dependency rules select no checks for this edit. The controller will reuse its previous receipts."
+      },
+      "checks": [
+        {
+          "checkId": "load",
+          "label": "Bridge load",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:1:load",
+            "checkId": "load",
+            "label": "Bridge load",
+            "passed": false,
+            "world": {
+              "packageMass": 10.5,
+              "bridgeCapacity": 7.5,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "b1aa4371b8148283fc116a4759b5ab1ba653f08cb03210634775176151b5e0d3",
+            "createdAt": "2026-09-27T22:16:42.166Z",
+            "checkVersion": "load-v1",
+            "details": "10.5 kg package exceeds the 7.5 kg bridge capacity."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "b1aa4371b8148283fc116a4759b5ab1ba653f08cb03210634775176151b5e0d3"
+        },
+        {
+          "checkId": "route",
+          "label": "Route continuity",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:route",
+            "checkId": "route",
+            "label": "Route continuity",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "route-v1",
+            "details": "Both the bridge and detour connect the dock to the depot."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2"
+        },
+        {
+          "checkId": "destination",
+          "label": "Destination match",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:destination",
+            "checkId": "destination",
+            "label": "Destination match",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "destination-v1",
+            "details": "Parcel destination \u201cdepot\u201d matches station \u201cdepot\u201d."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a"
+        }
+      ],
+      "route": "detour",
+      "outcome": "delivered",
+      "explanation": "The load receipt rejects the bridge. The connected detour delivers the 10.5 kg package safely.",
+      "memoryUsed": [],
+      "createdAt": "2026-09-27T22:16:42.917Z",
+      "staleEvidence": false,
+      "environment": {
+        "bridgeHeld": false,
+        "actualLoad": 10.5,
+        "capacity": 7.5
+      },
+      "procedureUsed": false,
+      "procedureFallbackReason": "No executable Memorable procedure was recalled; using the built-in procedure.",
+      "procedureSteps": [
+        {
+          "seq": 1,
+          "action": "recall_dependencies",
+          "handler": "recall_dependencies",
+          "status": "executed",
+          "result": "Loaded 2 active dependency rules."
+        },
+        {
+          "seq": 2,
+          "action": "select_checks",
+          "handler": "select_checks",
+          "status": "executed",
+          "result": "The active dependency rules select no checks for this edit. The controller will reuse its previous receipts."
+        },
+        {
+          "seq": 3,
+          "action": "check_load",
+          "handler": "check_load",
+          "status": "reused",
+          "result": "Reused bridge load receipt adcbba0c-eb60-40ba-b805-55b52053ae60:run:1:load."
+        },
+        {
+          "seq": 4,
+          "action": "check_route",
+          "handler": "check_route",
+          "status": "reused",
+          "result": "Reused route continuity receipt adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:route."
+        },
+        {
+          "seq": 5,
+          "action": "check_destination",
+          "handler": "check_destination",
+          "status": "reused",
+          "result": "Reused destination match receipt adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:destination."
+        },
+        {
+          "seq": 6,
+          "action": "choose_route",
+          "handler": "choose_route",
+          "status": "executed",
+          "result": "Chose detour from the available check receipts."
+        },
+        {
+          "seq": 7,
+          "action": "simulate_delivery",
+          "handler": "simulate_delivery",
+          "status": "executed",
+          "result": "Observed outcome: delivered."
+        },
+        {
+          "seq": 8,
+          "action": "verify_delivery",
+          "handler": "verify_delivery",
+          "status": "executed",
+          "result": "Verified observed outcome: delivered."
+        }
+      ]
+    },
+    {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:3",
+      "agentId": "adcbba0c-eb60-40ba-b805-55b52053ae60",
+      "world": {
+        "packageMass": 4,
+        "bridgeCapacity": 7.5,
+        "bridgeColor": "teal"
+      },
+      "previousWorld": {
+        "packageMass": 10.5,
+        "bridgeCapacity": 7.5,
+        "bridgeColor": "teal"
+      },
+      "plan": {
+        "changedFields": [
+          "packageMass"
+        ],
+        "selectedChecks": [
+          "load"
+        ],
+        "reusedChecks": [
+          "route",
+          "destination"
+        ],
+        "matchedRules": [
+          {
+            "id": "package-mass-load",
+            "field": "packageMass",
+            "check": "load",
+            "source": "gbrain",
+            "reason": "When the package mass changes, recheck the bridge load before reusing an earlier crossing result.",
+            "provenance": "Human correction in this synthetic robot experiment. Note: Load evidence depends on the parcel weight.",
+            "createdAt": "2026-09-27T22:16:32.325Z"
+          }
+        ],
+        "explanation": "Recheck bridge load; reuse 2 other receipts."
+      },
+      "checks": [
+        {
+          "checkId": "load",
+          "label": "Bridge load",
+          "status": "ran",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:3:load",
+            "checkId": "load",
+            "label": "Bridge load",
+            "passed": true,
+            "world": {
+              "packageMass": 4,
+              "bridgeCapacity": 7.5,
+              "bridgeColor": "teal"
+            },
+            "inputHash": "287be605b1c0455516be471c9ae325907ffc99c235e1fd66f12b78a64fcee23d",
+            "createdAt": "2026-09-27T22:16:44.538Z",
+            "checkVersion": "load-v1",
+            "details": "4 kg package fits within the 7.5 kg bridge capacity."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "287be605b1c0455516be471c9ae325907ffc99c235e1fd66f12b78a64fcee23d"
+        },
+        {
+          "checkId": "route",
+          "label": "Route continuity",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:route",
+            "checkId": "route",
+            "label": "Route continuity",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "route-v1",
+            "details": "Both the bridge and detour connect the dock to the depot."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2"
+        },
+        {
+          "checkId": "destination",
+          "label": "Destination match",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:destination",
+            "checkId": "destination",
+            "label": "Destination match",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "destination-v1",
+            "details": "Parcel destination \u201cdepot\u201d matches station \u201cdepot\u201d."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a"
+        }
+      ],
+      "route": "bridge",
+      "outcome": "delivered",
+      "explanation": "The 4 kg package crosses within the 7.5 kg bridge capacity.",
+      "memoryUsed": [
+        {
+          "id": "package-mass-load",
+          "field": "packageMass",
+          "check": "load",
+          "source": "gbrain",
+          "reason": "When the package mass changes, recheck the bridge load before reusing an earlier crossing result.",
+          "provenance": "Human correction in this synthetic robot experiment. Note: Load evidence depends on the parcel weight.",
+          "createdAt": "2026-09-27T22:16:32.325Z"
+        }
+      ],
+      "createdAt": "2026-09-27T22:16:44.538Z",
+      "staleEvidence": false,
+      "environment": {
+        "bridgeHeld": true,
+        "actualLoad": 4,
+        "capacity": 7.5
+      },
+      "procedureMemory": {
+        "slug": "procedures/1c1d3bf5-recheck-simulated-delivery-route-with-new-load",
+        "title": "Recheck simulated delivery route with new load",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs check-load --dir .data/verification"
+          },
+          {
+            "seq": 2,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs choose-route --dir .data/verification"
+          },
+          {
+            "seq": 3,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs simulate-delivery --dir .data/verification"
+          },
+          {
+            "seq": 4,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs verify-run --dir .data/verification"
+          }
+        ],
+        "postconditions": [
+          "node scripts/sim-step.mjs verify-run --dir .data/verification"
+        ],
+        "source": "memorable"
+      },
+      "procedureUsed": true,
+      "procedureSteps": [
+        {
+          "seq": 1,
+          "action": "shell",
+          "handler": "check_load",
+          "status": "executed",
+          "result": "4 kg package fits within the 7.5 kg bridge capacity."
+        },
+        {
+          "seq": 2,
+          "action": "shell",
+          "handler": "choose_route",
+          "status": "executed",
+          "result": "Chose bridge from the available check receipts."
+        },
+        {
+          "seq": 3,
+          "action": "shell",
+          "handler": "simulate_delivery",
+          "status": "executed",
+          "result": "Observed outcome: delivered."
+        },
+        {
+          "seq": 4,
+          "action": "shell",
+          "handler": "verify_delivery",
+          "status": "executed",
+          "result": "Verified observed outcome: delivered."
+        }
+      ],
+      "independentVerification": {
+        "passed": true,
+        "steps": 4
+      }
+    },
+    {
+      "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:4",
+      "agentId": "adcbba0c-eb60-40ba-b805-55b52053ae60",
+      "world": {
+        "packageMass": 4,
+        "bridgeCapacity": 3,
+        "bridgeColor": "teal"
+      },
+      "previousWorld": {
+        "packageMass": 4,
+        "bridgeCapacity": 7.5,
+        "bridgeColor": "teal"
+      },
+      "plan": {
+        "changedFields": [
+          "bridgeCapacity"
+        ],
+        "selectedChecks": [
+          "load"
+        ],
+        "reusedChecks": [
+          "route",
+          "destination"
+        ],
+        "matchedRules": [
+          {
+            "id": "baseline-capacity-load",
+            "field": "bridgeCapacity",
+            "check": "load",
+            "reason": "A changed bridge capacity requires a new load check.",
+            "source": "baseline",
+            "provenance": "Built-in dependency supplied with the initial controller.",
+            "createdAt": "1970-01-01T00:00:00.000Z"
+          }
+        ],
+        "explanation": "Recheck bridge load; reuse 2 other receipts."
+      },
+      "checks": [
+        {
+          "checkId": "load",
+          "label": "Bridge load",
+          "status": "ran",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:run:4:load",
+            "checkId": "load",
+            "label": "Bridge load",
+            "passed": false,
+            "world": {
+              "packageMass": 4,
+              "bridgeCapacity": 3,
+              "bridgeColor": "teal"
+            },
+            "inputHash": "8504121360cf17c2482b0ff64070ebd0216daf9fc5b200526303013c24a830ec",
+            "createdAt": "2026-09-27T22:16:46.601Z",
+            "checkVersion": "load-v1",
+            "details": "4 kg package exceeds the 3 kg bridge capacity."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "8504121360cf17c2482b0ff64070ebd0216daf9fc5b200526303013c24a830ec"
+        },
+        {
+          "checkId": "route",
+          "label": "Route continuity",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:route",
+            "checkId": "route",
+            "label": "Route continuity",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "route-v1",
+            "details": "Both the bridge and detour connect the dock to the depot."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "7ab88b325c66b1add747f14c1147b776d2821be5203b05349d8ddb87ecef89b2"
+        },
+        {
+          "checkId": "destination",
+          "label": "Destination match",
+          "status": "reused",
+          "receipt": {
+            "id": "adcbba0c-eb60-40ba-b805-55b52053ae60:baseline:destination",
+            "checkId": "destination",
+            "label": "Destination match",
+            "passed": true,
+            "world": {
+              "packageMass": 2,
+              "bridgeCapacity": 6,
+              "bridgeColor": "coral"
+            },
+            "inputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a",
+            "createdAt": "2026-09-27T22:16:40.381Z",
+            "checkVersion": "destination-v1",
+            "details": "Parcel destination \u201cdepot\u201d matches station \u201cdepot\u201d."
+          },
+          "knownApplicable": true,
+          "actuallyApplicable": true,
+          "currentInputHash": "ff60ca5387a049985c120666dc84e2e4c7ba303fd5fc16347c2700456b7b737a"
+        }
+      ],
+      "route": "detour",
+      "outcome": "delivered",
+      "explanation": "The load receipt rejects the bridge. The connected detour delivers the 4 kg package safely.",
+      "memoryUsed": [
+        {
+          "id": "baseline-capacity-load",
+          "field": "bridgeCapacity",
+          "check": "load",
+          "reason": "A changed bridge capacity requires a new load check.",
+          "source": "baseline",
+          "provenance": "Built-in dependency supplied with the initial controller.",
+          "createdAt": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "createdAt": "2026-09-27T22:16:46.601Z",
+      "staleEvidence": false,
+      "environment": {
+        "bridgeHeld": false,
+        "actualLoad": 4,
+        "capacity": 3
+      },
+      "procedureMemory": {
+        "slug": "procedures/1c1d3bf5-recheck-simulated-delivery-route-with-new-load",
+        "title": "Recheck simulated delivery route with new load",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs check-load --dir .data/verification"
+          },
+          {
+            "seq": 2,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs choose-route --dir .data/verification"
+          },
+          {
+            "seq": 3,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs simulate-delivery --dir .data/verification"
+          },
+          {
+            "seq": 4,
+            "action": "shell",
+            "description": "node scripts/sim-step.mjs verify-run --dir .data/verification"
+          }
+        ],
+        "postconditions": [
+          "node scripts/sim-step.mjs verify-run --dir .data/verification"
+        ],
+        "source": "memorable"
+      },
+      "procedureUsed": true,
+      "procedureSteps": [
+        {
+          "seq": 1,
+          "action": "shell",
+          "handler": "check_load",
+          "status": "executed",
+          "result": "4 kg package exceeds the 3 kg bridge capacity."
+        },
+        {
+          "seq": 2,
+          "action": "shell",
+          "handler": "choose_route",
+          "status": "executed",
+          "result": "Chose detour from the available check receipts."
+        },
+        {
+          "seq": 3,
+          "action": "shell",
+          "handler": "simulate_delivery",
+          "status": "executed",
+          "result": "Observed outcome: delivered."
+        },
+        {
+          "seq": 4,
+          "action": "shell",
+          "handler": "verify_delivery",
+          "status": "executed",
+          "result": "Verified observed outcome: delivered."
+        }
+      ],
+      "independentVerification": {
+        "passed": true,
+        "steps": 4
+      }
+    }
+  ]
+}

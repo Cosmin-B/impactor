@@ -1,0 +1,89 @@
+{
+  "method": "Greedy completion, 32 generated tokens, no newline stop. Exact match after whitespace stripping. Same held-out prompts for base and saved checkpoint.",
+  "base_model": "Qwen/Qwen3.6-35B-A3B-FP8",
+  "checkpoint": "river://42fedf9a-edfd-44ec-a56b-9c6500af4142/sampler_weights/impactor-dispatch-v1",
+  "base": {
+    "correct": 0,
+    "total": 9,
+    "rows": [
+      {
+        "expected": "normal",
+        "generated": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Task:** Choose the next robot dispatch action:"
+      },
+      {
+        "expected": "normal",
+        "generated": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Task:** Choose the next robot dispatch action:"
+      },
+      {
+        "expected": "normal",
+        "generated": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Task:** Choose the next robot dispatch action:"
+      },
+      {
+        "expected": "charge",
+        "generated": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Task:** Choose the next robot dispatch action:"
+      },
+      {
+        "expected": "charge",
+        "generated": "<think>\n\n</think>\n\nThe robot is currently at 35% battery, but the planned route requires 51% to complete without stopping. Attempting"
+      },
+      {
+        "expected": "charge",
+        "generated": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Goal:** Choose the next robot dispatch action:"
+      },
+      {
+        "expected": "detour",
+        "generated": "<think>\n\n</think>\n\nThe robot is currently facing a critical constraint: the parcel weight (6.4 kg) exceeds the bridge's capacity (6 kg)."
+      },
+      {
+        "expected": "detour",
+        "generated": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Goal:** Choose the next robot dispatch action:"
+      },
+      {
+        "expected": "detour",
+        "generated": "<think>\n\n</think>\n\nThe robot is currently at the depot with a parcel weighing 7.6 kg. The planned route involves crossing a bridge with a capacity"
+      }
+    ]
+  },
+  "trained": {
+    "correct": 9,
+    "total": 9,
+    "rows": [
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "normal",
+        "generated": "normal"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "charge",
+        "generated": "charge"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      },
+      {
+        "expected": "detour",
+        "generated": "detour"
+      }
+    ]
+  }
+}

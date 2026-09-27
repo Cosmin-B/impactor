@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "impactor",
+  "account_id": "44e0eb8bfa14c6c4cdb5d07e3fafefc5",
+  "main": "cloudflare/worker.ts",
+  "compatibility_date": "2026-09-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {"directory":"./dist","binding":"ASSETS","not_found_handling":"single-page-application","run_worker_first":["/api/*"]},
+  "routes": [{"pattern":"impactor.cosminbararu.com","custom_domain":true}],
+  "d1_databases": [{"binding":"DB","database_name":"impactor-state","database_id":"723ecbd9-4cea-44d3-bbd9-b02ed469f0ce"}],
+  "observability": {"enabled":true}
+}
