@@ -5,7 +5,7 @@ status: draft, needs Cosmin's rewrite pass before publication
 ## Spoken script
 
 I build physical AI simulation infrastructure and the specialized ground-truth rendering for robots, drones and autonomous vehicles.
-That spans C++ engine architecture, GPU kernels, and sensor simulation such as lidar and radar.
+That spans C++ engine architecture, GPU kernels, and GPU clustering work.
 
 Large products accumulate thousands of decisions, often around customer models and implementations we cannot inspect. When something changes, we still need to know why our checks were sufficient and which assumptions need revisiting.
 
