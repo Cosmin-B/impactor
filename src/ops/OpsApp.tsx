@@ -500,6 +500,61 @@ export default function OpsApp() {
             </button>
           </div>
         </section>
+        <details className="tool-contributions">
+          <summary>How the tools reduce repeated work</summary>
+          <p>
+            Impactor adds conditions and observed outcomes to recalled
+            experiments and procedure branches, then checks whether they apply
+            to this shift.
+          </p>
+          <div className="tool-contribution-grid">
+            <article>
+              <strong>GBrain</strong>
+              <h3>Remember what was tested</h3>
+              <p>
+                Recalls the experiments and their conditions, so a fresh agent
+                can use the investigation already done.
+              </p>
+            </article>
+            <article>
+              <strong>Memorable</strong>
+              <h3>Retrieve the checking procedure</h3>
+              <p>
+                Finds a saved procedure. Impactor attaches execution branches
+                with their conditions and outcomes for the next plan.
+              </p>
+            </article>
+            <article>
+              <strong>TypeSafe Jev</strong>
+              <h3>Choose the next action</h3>
+              <p>
+                Uses the goal and applicable memory to choose a plan, then
+                decides whether each delivery should proceed, charge, detour or
+                wait.
+              </p>
+            </article>
+            <article>
+              <strong>River AI · experiment</strong>
+              <h3>Train on simulated decisions</h3>
+              <p>
+                A fine-tuned adapter returned the expected action labels on nine
+                held-out examples. This is a format-adaptation test; Jev
+                controls the live deliveries.
+              </p>
+              <button
+                className="ops-btn quiet"
+                onClick={() => {
+                  setTab("training");
+                  document
+                    .getElementById("shift-results")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                See training results <ChevronRight size={14} />
+              </button>
+            </article>
+          </div>
+        </details>
         <section className="ops-evidence" id="shift-results">
           <div className="evidence-top">
             <div>

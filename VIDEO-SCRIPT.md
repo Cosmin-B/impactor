@@ -15,7 +15,7 @@ Here is a simulated customer rollout, with engineering, GTM and accounts working
 
 Save the completed checks, change the code, and watch which tasks need to run again. The cost estimate changes because we avoid repeated work and route handoffs to their owners.
 
-GBrain stores those conditions. Memorable retrieves checking procedures in the delivery lab. Jev assesses whether a result still applies.
+GBrain stores those conditions. Memorable retrieves checking procedures in the delivery lab. Jev chooses the delivery actions. River trained a separate adapter on simulated decisions, which I tested on nine held-out examples.
 
 
 ## Screen sequence
