@@ -1,3 +1,4 @@
+import { riverDispatch } from "./river";
 import {
   eligibleFactors,
   makeVariant,
@@ -124,9 +125,12 @@ export async function runOps(
   goal: string,
   keys: ProviderKeys,
   hotLoop = true,
+  controller: "jev" | "river" = "jev",
 ): Promise<OpsState> {
   if (!keys.GBRAIN_TOKEN || !keys.TYPESAFE_API_KEY)
     throw new Error("GBrain and Jev must be configured.");
+  if (!["jev", "river"].includes(controller))
+    throw Error("Choose a valid dispatch controller.");
   const relationships = await recallRelationships(keys.GBRAIN_TOKEN, state.id);
   const known = eligibleFactors(relationships, world);
   const cached =
@@ -152,20 +156,27 @@ export async function runOps(
         false,
         overrides,
       ).visits[i];
-      const selected = await dispatchDecision(
-        keys.TYPESAFE_API_KEY,
-        goal,
-        world,
-        predicted,
-        completedBeforeDispatch(plan, i),
-        relationships,
-      );
+      const selected =
+        controller === "river"
+          ? await riverDispatch(keys, world, plan.visits[i])
+          : {
+              ...(await dispatchDecision(
+                keys.TYPESAFE_API_KEY,
+                goal,
+                world,
+                predicted,
+                completedBeforeDispatch(plan, i),
+                relationships,
+              )),
+              provider: "jev" as const,
+            };
       overrides[predicted.jobId] = selected.action;
       plan = simulate(world, decision.choice, known, true, overrides);
       decisions.push({ job: predicted.jobId, ...selected });
     }
   const previous = state.history.at(-1)?.plan;
   const run: OpsRun = {
+    controller: hotLoop ? controller : "none",
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
     goal,

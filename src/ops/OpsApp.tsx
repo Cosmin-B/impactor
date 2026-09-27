@@ -121,6 +121,7 @@ export default function OpsApp() {
     [playing, setPlaying] = useState(false),
     [tab, setTab] = useState("predictions"),
     [hotLoop, setHotLoop] = useState(true),
+    [controller, setController] = useState<"jev" | "river">("jev"),
     [activeRelation, setActiveRelation] = useState<Relationship | null>(null),
     [notice, setNotice] = useState("");
   const lock = useRef(false),
@@ -198,7 +199,9 @@ export default function OpsApp() {
         ? "Jev is comparing four plans"
         : action === "run"
           ? hotLoop
-            ? "Jev is checking each dispatch against the goal"
+            ? controller === "river"
+              ? "River’s trained adapter is checking each simulated dispatch"
+              : "Jev is checking each dispatch against the goal"
             : "Running the selected plan"
           : action === "learn"
             ? "Running 18 controlled trials and saving the results"
@@ -210,6 +213,7 @@ export default function OpsApp() {
         world,
         goal,
         hotLoop,
+        controller,
         fresh: action === "session",
       });
       setState(next);
@@ -290,6 +294,11 @@ export default function OpsApp() {
             Forecast with Jev
           </button>
         </section>
+        <p className="forecast-explainer">
+          The simulator predicts four strategies. Jev selects one for your goal.
+          Run the shift applies your chosen dispatch controller’s actions. River
+          uses simulated preflight outcomes, as in its training examples.
+        </p>
         {error && (
           <div role="alert" className="ops-error">
             {error}
@@ -353,6 +362,21 @@ export default function OpsApp() {
                 <RefreshCw size={15} />
                 Fresh agent
               </button>
+              <label className="controller-select">
+                Dispatch controller
+                <select
+                  aria-label="Dispatch controller"
+                  value={controller}
+                  disabled={disabled}
+                  onChange={(e) => {
+                    setController(e.target.value as "jev" | "river");
+                    setHotLoop(true);
+                  }}
+                >
+                  <option value="jev">TypeSafe Jev</option>
+                  <option value="river">River · fine-tuned</option>
+                </select>
+              </label>
               <label className="hot-loop">
                 <input
                   type="checkbox"
@@ -361,14 +385,14 @@ export default function OpsApp() {
                   onChange={(e) => setHotLoop(e.target.checked)}
                 />
                 <Zap size={14} />
-                Jev in the loop
+                Controller enabled
               </label>
             </div>
             <div className="run-message" aria-live="polite">
               {busy ||
                 notice ||
                 (run
-                  ? `${run.plan.delivered}/6 delivered · ${run.plan.onTime} on time · ${run.decisions?.length || 0} Jev dispatch decisions`
+                  ? `${run.plan.delivered}/6 delivered · ${run.plan.onTime} on time · ${run.decisions?.length || 0} ${run.controller === "river" ? "River" : "Jev"} dispatch decisions`
                   : "Start with a forecast. Then change the world and see where its assumptions fail.")}
             </div>
           </section>
@@ -534,11 +558,12 @@ export default function OpsApp() {
               </p>
             </article>
             <article>
-              <strong>River AI · experiment</strong>
+              <strong>River AI · trained controller</strong>
               <h3>Train on simulated decisions</h3>
               <p>
                 A fine-tuned adapter returned the expected action labels on nine
-                held-out examples. This tests the required action format. Jev controls the simulated deliveries.
+                held-out examples. Select River as the dispatch controller to
+                apply the saved adapter’s actions to the simulated deliveries.
               </p>
               <button
                 className="ops-btn quiet"
@@ -564,7 +589,7 @@ export default function OpsApp() {
               {[
                 ["predictions", "Forecast vs. observed"],
                 ["relationships", "Relationship graph"],
-                ["decisions", "Jev decisions"],
+                ["decisions", "Dispatch decisions"],
                 ["deliveries", "Delivery timeline"],
                 ["memory", "Conditional memory"],
                 ["training", "River training"],
@@ -894,25 +919,42 @@ export default function OpsApp() {
                         <strong>
                           {JOBS.find((j) => j.id === d.job)?.name}
                         </strong>
-                        <small>Completed deliveries → next dispatch</small>
+                        <small>
+                          {d.provider === "river"
+                            ? `River trained · preflight: ${d.preflightStatus}`
+                            : "Jev · completed deliveries → next dispatch"}
+                        </small>
                       </div>
                       <b>{d.action}</b>
                       <span>
-                        {Math.round(d.confidence * 100)}%
+                        {d.confidence === null
+                          ? "Trained adapter"
+                          : `${Math.round(d.confidence * 100)}%`}
                         <small>{d.latencyMs} ms</small>
                       </span>
                     </div>
                   ))
                 ) : (
                   <p className="chart-empty">
-                    Enable "Jev in the loop" and run a shift. Actual decisions
-                    and measured API latency will appear here.
+                    Enable a dispatch controller and run a shift. Actual
+                    decisions and measured API latency will appear here.
                   </p>
                 )}
               </div>
             </div>
           )}
-          {tab === "training" && <RiverPanel />}
+          {tab === "training" && (
+            <RiverPanel
+              run={run}
+              onUse={() => {
+                setController("river");
+                setHotLoop(true);
+                document
+                  .getElementById("mission-goal")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+          )}
           {tab === "memory" && (
             <div className="memory-extension">
               <div>

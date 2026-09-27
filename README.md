@@ -58,3 +58,13 @@ Remember completed checks to save their input conditions in GBrain. Change a cod
 Cost and finishing-time comparisons are simulation estimates with editable assumptions. The app does not launch 100 paid agents. Memorable procedure retrieval and River training are demonstrated in the delivery lab.
 
 The one-minute recording draft and screen cues are in [VIDEO-SCRIPT.md](VIDEO-SCRIPT.md).
+
+## River dispatch controller
+
+Select **River · fine-tuned** beside Run the shift. Jev still selects the high-level strategy. For each job, the simulator computes a preflight outcome and the saved River checkpoint selects `normal`, `charge` or `detour`. The simulator applies that action before evaluating the next dispatch. The dispatch table records the provider, checkpoint and request time. River errors stop the run without silently switching providers.
+
+The demo currently uses an authenticated Python relay with Cloudflare Tunnel. Inference runs on River GPUs; the relay loads only the tokenizer locally. Keep that relay and tunnel running for the public River controller to work. The rest of the app remains hosted on Cloudflare.
+
+To run your own relay, install `river-client` and `transformers` in a Python 3.12 environment, set `RIVER_API_KEY` and a random `RIVER_RELAY_TOKEN`, then run `python training/serve-river.py`. Set `RIVER_RELAY_URL` and `RIVER_RELAY_TOKEN` as Cloudflare Worker secrets. The relay accepts only bounded synthetic dispatch states and uses the checkpoint in `training/result.json`.
+
+This adapter was trained on 27 synthetic examples for one delivery task. Its nine held-out action-label matches do not establish broad reliability. Applying it across the six deliveries is an additional demonstration. Its input includes the simulated normal-route outcome, so it chooses a correction rather than independently predicting physical consequences.

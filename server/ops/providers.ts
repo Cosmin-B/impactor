@@ -8,6 +8,8 @@ import type {
 } from "../../shared/ops/types";
 export interface ProviderKeys {
   GBRAIN_TOKEN?: string;
+  RIVER_RELAY_URL?: string;
+  RIVER_RELAY_TOKEN?: string;
   TYPESAFE_API_KEY?: string;
   MEMORABLE_API_KEY?: string;
 }

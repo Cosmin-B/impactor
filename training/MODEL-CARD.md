@@ -8,4 +8,4 @@ Nine distinct prompts were held out, with no exact prompt overlap with training.
 
 A second test loaded the saved checkpoint and compared it with the base model on the same nine prompts, using a 32-token limit and no newline stop. The adapter again returned all nine exact labels. The base began reasoning or explanatory text within the token limit. These tests establish a compact response format on this small synthetic task. They do not establish better general reasoning or broad reliability.
 
-The deployed app displays these measurements. TypeSafe Jev continues to control live dispatches.
+The deployed app displays these measurements and offers the saved adapter as the River dispatch controller. Jev selects the high-level plan. When River is selected, the adapter chooses each correction from the simulated preflight outcome, and its action changes the next simulation step. This additional six-delivery use extends beyond the single delivery task used for training.

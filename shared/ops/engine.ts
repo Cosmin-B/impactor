@@ -285,6 +285,7 @@ export function simulate(
         returning.time +
         2 +
         (seen.liftClosed && job.destination === "studio" ? 4 : 0);
+    const batteryBefore = unit.battery;
     unit.battery = Math.max(0, unit.battery - energy);
     unit.available = finish;
     visits.push({
@@ -298,6 +299,7 @@ export function simulate(
       mass,
       energy,
       batteryAfter: unit.battery,
+      batteryBefore,
       status,
       reason,
       charged,

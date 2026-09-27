@@ -1,3 +1,4 @@
+import type { OpsRun } from "../../shared/ops/types";
 import result from "../../shared/ops/river-training.json";
 interface Evaluation {
   correct: number;
@@ -17,12 +18,26 @@ const report = result as {
   task: string;
   limitations: string;
 };
-export function RiverPanel() {
+export function RiverPanel({
+  run,
+  onUse,
+}: {
+  run?: OpsRun | null;
+  onUse: () => void;
+}) {
   const max = Math.max(1, ...report.steps.map((s) => s.loss));
   return (
     <div className="river-panel">
       <div>
-        <p className="eyebrow">River post-training experiment</p>
+        <p className="eyebrow">River post-training and dispatch</p>
+        <button className="ops-btn primary" onClick={onUse}>
+          Use trained River controller
+        </button>
+        <p>
+          {run?.controller === "river"
+            ? `${run.decisions?.length || 0} actual River decisions applied in the last shift. ${run.plan.delivered}/6 delivered, ${run.plan.onTime} on time.`
+            : "Select the trained controller, then Run the shift. The saved River checkpoint chooses normal, charge or detour after each simulated preflight."}
+        </p>
         <h3>A policy trained from simulated corrections</h3>
         <p>{report.task}</p>
         <dl>

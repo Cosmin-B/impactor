@@ -46,6 +46,7 @@ export interface Visit {
   mass: number;
   energy: number;
   batteryAfter: number;
+  batteryBefore?: number;
   status: "delivered" | "late" | "stranded" | "overload" | "blocked";
   reason: string;
   charged: boolean;
@@ -90,6 +91,7 @@ export interface Decision {
   focus?: string;
 }
 export interface OpsRun {
+  controller?: "jev" | "river" | "none";
   id: string;
   createdAt: string;
   goal: string;
@@ -103,8 +105,11 @@ export interface OpsRun {
   decisions?: Array<{
     job: string;
     action: string;
-    confidence: number;
+    confidence: number | null;
     latencyMs: number;
+    provider?: "jev" | "river";
+    checkpoint?: string;
+    preflightStatus?: string;
   }>;
   previous?: { delivered: number; onTime: number; failed: number };
   memory: { gbrain: boolean; memorable: boolean; message: string };

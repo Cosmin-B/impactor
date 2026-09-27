@@ -33,6 +33,7 @@ export default {
         gbrain: Boolean(env.GBRAIN_TOKEN),
         jev: Boolean(env.TYPESAFE_API_KEY),
         memorable: Boolean(env.MEMORABLE_API_KEY),
+        river: Boolean(env.RIVER_RELAY_URL && env.RIVER_RELAY_TOKEN),
         deployment: "Cloudflare Workers + D1",
       });
     try {
@@ -92,6 +93,7 @@ export default {
           goal,
           env,
           body.hotLoop !== false,
+          body.controller || "jev",
         );
       } else if (url.pathname === "/api/ops/learn")
         state = await learnOps(state, validateWorld(body.world), env);

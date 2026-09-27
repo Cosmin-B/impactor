@@ -29,3 +29,7 @@ Jev chooses one of four strategies from simulated forecasts. Before each deliver
 The forecast is recorded before those interventions. The results page compares it with the completed shift under the same settings. A fleet-size chart reruns the forecast with different robot counts. It measures this simulator's schedule, not real robot or general agent-swarm performance.
 
 The 3D view replays the calculated route timeline after the API calls finish. It does not depict API calls happening during the animation.
+
+## River controller
+
+The trained River adapter can replace Jev for the per-delivery correction while Jev still selects the strategy. Each request uses a simulated preflight outcome, matching the training protocol. A validated action changes the next run of the simulator. The recorded procedure branch then contains those actual applied actions and the observed simulated outcomes.

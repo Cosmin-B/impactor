@@ -1,29 +1,33 @@
-# One-minute recording script
+# Recording script
 
 status: draft, needs Cosmin's rewrite pass before publication
 
 ## Spoken script
 
-I build and extend performance-sensitive software.
-A lot of my day is figuring out what changed, which results still apply, and what needs checking again.
+I work on physical AI: simulation and ground-truth rendering for robots, drones and autonomous vehicles.
+My day is C++ engines and GPU kernels, tuned to specific hardware, sensors and customer workloads.
 
-I built Impactor here this weekend to make that visible.
+Every change raises the same question: which results still apply, and what needs checking again?
 
-Changing the load or weather can make an old delivery result misleading. The agent needs to remember its conditions.
+I built Impactor to make that visible through delivery robots dealing with rain, heavy cargo and limited battery.
 
-Here is a simulated customer rollout, with engineering, GTM and accounts working toward one goal. I can go from three agents to a hundred, but shared builds and reviews still limit how quickly work finishes.
+I extended GBrain with experiments that carry their conditions. Before reusing a result, Impactor checks whether those conditions still match.
 
-Save the completed checks, change the code, and watch which tasks need to run again. The cost estimate changes because we avoid repeated work and route handoffs to their owners.
+Around Memorable's procedures, I added execution branches: each shift's conditions, actions and outcomes. A fresh agent retrieves that experience without reconstructing the investigation.
 
-GBrain stores those conditions. Memorable retrieves checking procedures in the delivery lab. Jev chooses the delivery actions. River trained a separate adapter on simulated decisions, which I tested on nine held-out examples.
+Change paint and the contexts still match. Change cargo and the graph shows which experiments need retesting.
 
+Jev selects the plan. The adapter I fine-tuned with River now chooses dispatch corrections from simulated preflight checks, and those actions change what the robots do.
 
 ## Screen sequence
 
-- 0-12 seconds: Delivery lab, orbit the world slightly while introducing your background.
-- 12-30 seconds: Show a changed condition, then the relationship graph and which previous results still apply.
-- 30-45 seconds: Open Workplace. Select 3 agents, then 100. Point to the finishing-time curve and review slots.
-- 45-55 seconds: Click Remember completed checks, then Code v1. Show the dimmed reused tasks and changed cost estimate.
-- 55-60 seconds: Return to the delivery lab and its conditional memory view.
+- 0-13 seconds: Delivery world and physical-AI background.
+- 13-24 seconds: Rain, cargo and battery controls.
+- 24-37 seconds: Conditional memory and GBrain's experiment conditions.
+- 37-48 seconds: Procedure branches and Fresh agent.
+- 48-55 seconds: Change only paint, then change parcel weight.
+- 55-65 seconds: Select River · fine-tuned, then show a completed shift's Dispatch decisions and River training results.
 
-Leave room for the clicks and pauses. The spoken text is about one minute at a conversational pace. The workplace timings and costs are simulation estimates.
+About 60-65 seconds at a natural pace. For a shorter take, omit the second background sentence. Run the River shift before recording its results; six requests took about 27 seconds in the verified storm run, followed by the animation.
+
+Verified on the public app: six River checkpoint decisions applied, six of six deliveries completed, one on time. That run is a demonstration of integration, not proof of broad policy quality. Inference runs on River GPUs through a small authenticated local relay. Keep the relay and tunnel running during the demo.

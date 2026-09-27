@@ -246,7 +246,7 @@ const opsSessions = new Map<string,OpsState>();
 async function opsKeys(){
  let memorableKey=process.env.MEMORABLE_API_KEY;
  if(!memorableKey)try{memorableKey=JSON.parse(await readFile(path.join(homedir(),'.memorable','config.json'),'utf8')).api_key;}catch{}
- return{GBRAIN_TOKEN:(await brain.authorization())||undefined,TYPESAFE_API_KEY:process.env.TYPESAFE_API_KEY,MEMORABLE_API_KEY:memorableKey};
+ return{GBRAIN_TOKEN:(await brain.authorization())||undefined,TYPESAFE_API_KEY:process.env.TYPESAFE_API_KEY,MEMORABLE_API_KEY:memorableKey,RIVER_RELAY_URL:process.env.RIVER_RELAY_URL,RIVER_RELAY_TOKEN:process.env.RIVER_RELAY_TOKEN};
 }
 app.post('/api/ops/:action',route(async(req,res)=>{
  const body=req.body,id=body?.id;
@@ -256,7 +256,7 @@ app.post('/api/ops/:action',route(async(req,res)=>{
   const action=req.params.action;
   if(action==='session'){if(body.fresh)current=await createOps(id,keys);}
   else if(action==='forecast')current=await forecastOps(current,validateWorld(body.world),String(body.goal||'').slice(0,600),keys);
-  else if(action==='run')current=await runOps(current,validateWorld(body.world),String(body.goal||'').slice(0,600),keys,body.hotLoop!==false);
+  else if(action==='run')current=await runOps(current,validateWorld(body.world),String(body.goal||'').slice(0,600),keys,body.hotLoop!==false,body.controller||"jev");
   else if(action==='learn')current=await learnOps(current,validateWorld(body.world),keys);
   else throw new RequestError('Unknown operation.',404);
   opsSessions.set(id,current);return current;
