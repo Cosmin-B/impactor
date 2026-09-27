@@ -7,7 +7,7 @@ status: draft, needs Cosmin's rewrite pass before publication
 I work on physical AI: C++ simulation engines and ground-truth rendering for robots, drones and autonomous vehicles.
 I tune GPU kernels and sensor simulation to specific hardware and customer workloads.
 
-Large products accumulate thousands of decisions from experiments and field experience. Tests encode some of that knowledge. When something changes, people still have to reconstruct why those tests were sufficient and whether they remain sufficient.
+Large products accumulate thousands of decisions, often around customer models and implementations we cannot inspect. When something changes, we still need to know why our checks were sufficient and which assumptions need revisiting.
 
 Impactor explores that problem in a delivery world.
 
