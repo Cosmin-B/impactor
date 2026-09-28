@@ -18,9 +18,14 @@ export function StoryHeader() {
         </div>
         <div className="story-context">
           <p>
-            Changing rain, cargo or bridge capacity can make an earlier delivery
-            plan fail. Impactor compares current conditions with saved experiments
-            and shows which need retesting.
+            To judge whether a result still applies, we need to understand the
+            technical choices and customer scenarios behind it, including why
+            earlier decisions made sense. We cannot always inspect the models or
+            implementations involved.
+          </p>
+          <p>
+            Impactor explores this in a delivery world. Change the conditions to
+            see which saved experiments need retesting.
           </p>
           <a className="story-jump" href="#delivery-lab">
             Explore the delivery world <ArrowDown size={16} aria-hidden="true" />

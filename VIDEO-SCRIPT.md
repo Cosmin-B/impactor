@@ -7,7 +7,7 @@ status: draft, needs Cosmin's rewrite pass before publication
 I build physical AI simulation infrastructure and the specialized ground-truth rendering for robots, drones and autonomous vehicles.
 That spans C++ engine architecture, GPU kernels, and GPU clustering work.
 
-Large products accumulate thousands of decisions, often around customer models and implementations we cannot inspect. When something changes, we still need to know why our checks were sufficient and which assumptions need revisiting.
+Large products accumulate thousands of decisions. We need to deeply understand the technical choices and customer scenarios that got us here, including models and implementations we cannot always inspect. When something changes, that context helps us decide which assumptions and checks need revisiting.
 
 Impactor explores that problem in a delivery world.
 
