@@ -29,6 +29,7 @@ import {
 } from "../../shared/ops/conditional-memory";
 import { RiverPanel } from "./RiverPanel";
 import { CityScene } from "./CityScene";
+import { StoryHeader } from "./StoryHeader";
 import "./ops.css";
 const presets = [
   { name: "Morning shift", world: DEFAULT_OPS },
@@ -273,10 +274,11 @@ export default function OpsApp() {
         </nav>
       </header>
       <main className="ops-main">
-        <div className="ops-intro">
+        <StoryHeader />
+        <div className="ops-intro" id="delivery-lab" tabIndex={-1}>
           <div>
             <p className="eyebrow">Robot delivery simulation</p>
-            <h1>Plan a delivery shift.</h1>
+            <h2>Plan a delivery shift.</h2>
           </div>
           <div className="shift-summary">
             <span>DELIVERY SIMULATION</span>
@@ -305,16 +307,32 @@ export default function OpsApp() {
             disabled={disabled || !state}
             onClick={() => act("forecast")}
             className="ops-btn secondary"
+            aria-describedby="forecast-explainer"
           >
-            <BrainCircuit size={16} />
-            Forecast with Jev
+            {busy === "Jev is comparing four plans" ? (
+              <LoaderCircle className="spin" size={16} />
+            ) : (
+              <BrainCircuit size={16} />
+            )}
+            {busy === "Jev is comparing four plans"
+              ? "Comparing plans..."
+              : "Compare delivery plans"}
           </button>
         </section>
-        <p className="forecast-explainer">
-          The simulator predicts four strategies. Jev selects one for your goal.
-          Run the shift applies your chosen dispatch controller’s actions. River
-          uses simulated preflight outcomes, as in its training examples.
+        <p className="forecast-explainer" id="forecast-explainer">
+          The simulator estimates delivery times and battery use for four plans.
+          <strong> Jev, the decision model, uses those estimates and your goal to
+          recommend one.</strong> You can review the forecast before running the shift.
         </p>
+        {forecastCurrent && predicted && (
+          <div className="forecast-ready" role="status">
+            <div>
+              <strong>{forecast.decision.provider === "jev" ? "Jev" : "Simulator"} recommends: {predicted.name}</strong>
+              <span>{predicted.onTime}/6 predicted on time · {Math.round(predicted.minutes)} min to finish</span>
+            </div>
+            <a href="#shift-results" onClick={() => setTab("predictions")}>Compare all four plans <ArrowRight size={15} /></a>
+          </div>
+        )}
         {providerWarning && (
           <div className="ops-provider-warning" role="status">
             <strong>Jev API credits exhausted.</strong> {providerWarning}
@@ -631,6 +649,22 @@ export default function OpsApp() {
           </div>
           {tab === "predictions" && (
             <>
+              {forecastCurrent && (
+                <div className="plan-comparison">
+                  <h3>Four simulated plans</h3>
+                  <div className="plan-table-scroll">
+                    <table>
+                      <thead><tr><th scope="col">Plan</th><th scope="col">Delivered</th><th scope="col">On time</th><th scope="col">Finish time</th><th scope="col">Battery demand</th></tr></thead>
+                      <tbody>{forecast.plans.map((plan) => (
+                        <tr key={plan.policy} className={plan.policy === forecast.decision.choice ? "recommended-plan" : ""}>
+                          <th scope="row">{plan.name}{plan.policy === forecast.decision.choice && <small>Recommended</small>}</th>
+                          <td>{plan.delivered}/6</td><td>{plan.onTime}/6</td><td>{Math.round(plan.minutes)} min</td><td>{Math.round(plan.energy)}% total</td>
+                        </tr>
+                      ))}</tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
               <div className="forecast-grid">
                 {[
                   ["On time", predicted?.onTime, observed?.onTime, "/ 6"],
