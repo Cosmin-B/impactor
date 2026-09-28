@@ -144,6 +144,11 @@ export default function OpsApp() {
           setState(s);
           setWorld(s.world);
           setGoal(s.goal);
+          if (
+            s.forecast?.decision.provider === "local" ||
+            s.history.at(-1)?.controller === "river"
+          )
+            setController("river");
           setBusy("");
         }
       })
@@ -160,6 +165,12 @@ export default function OpsApp() {
   const finished = useCallback(() => setPlaying(false), []);
   const run = state?.history.at(-1) || null;
   const forecast = state?.forecast;
+  const activeDecision = forecast?.decision || run?.decision;
+  const providerWarning = forecast
+    ? forecast.decision.provider === "local"
+      ? forecast.decision.reason
+      : undefined
+    : run?.warning;
   const forecastCurrent =
     forecast &&
     JSON.stringify(forecast.world) === JSON.stringify(world) &&
@@ -217,6 +228,11 @@ export default function OpsApp() {
         fresh: action === "session",
       });
       setState(next);
+      if (
+        next.forecast?.decision.provider === "local" ||
+        (action === "run" && next.history.at(-1)?.controller === "river")
+      )
+        setController("river");
       if (action === "run") setPlaying(true);
       if (action === "learn") {
         setActiveRelation(null);
@@ -299,6 +315,14 @@ export default function OpsApp() {
           Run the shift applies your chosen dispatch controller’s actions. River
           uses simulated preflight outcomes, as in its training examples.
         </p>
+        {providerWarning && (
+          <div className="ops-provider-warning" role="status">
+            <strong>Jev API credits exhausted.</strong> {providerWarning}
+            {activeDecision?.provider === "local"
+              ? " Plan source: deterministic simulator."
+              : " The recorded Jev plan is preserved; dispatch recovery uses River."}
+          </div>
+        )}
         {error && (
           <div role="alert" className="ops-error">
             {error}
@@ -893,17 +917,20 @@ export default function OpsApp() {
                     : ""}
                 </strong>
                 <small>
-                  {run
-                    ? `${run.decision.latencyMs} ms API request time · ${run.decision.inputTokens} input tokens`
-                    : ""}
+                  {run?.decision.provider === "local"
+                    ? "Deterministic simulator ranking · no model confidence"
+                    : run
+                      ? `${run.decision.latencyMs} ms API request time · ${run.decision.inputTokens} input tokens`
+                      : ""}
                 </small>
                 {run?.procedure && (
                   <div className="procedure-note">
                     <span>MEMORABLE PROCEDURE</span>
                     <strong>{run.procedure.title}</strong>
                     <p>
-                      Retrieved a saved delivery procedure and included it in
-                      Jev's plan comparison.
+                      {run.decision.provider === "local"
+                        ? "A saved procedure was recalled. The emergency simulator planner ranks plans using fixed priorities."
+                        : "Retrieved a saved delivery procedure and included it in Jev's plan comparison."}
                     </p>
                   </div>
                 )}
@@ -1094,7 +1121,11 @@ export default function OpsApp() {
           </span>
           <span>
             <i className={run?.decision || forecast?.decision ? "" : "muted"} />
-            TypeSafe Jev · decisions
+            {providerWarning
+              ? activeDecision?.provider === "local"
+                ? "Simulator planning · River dispatch"
+                : "Jev plan · River dispatch"
+              : "TypeSafe Jev · decisions"}
           </span>
           <span>
             Experiment {state?.round || 0} · {state?.relationships.length || 0}{" "}

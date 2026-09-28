@@ -22,6 +22,7 @@ import {
 } from "../../shared/ops/types";
 import {
   choosePlan,
+  JevUnavailable,
   dispatchDecision,
   recallRelationships,
   rememberRelationships,
@@ -135,6 +136,7 @@ export async function runOps(
   const known = eligibleFactors(relationships, world);
   const cached =
     state.forecast &&
+    state.forecast.decision.provider === "jev" &&
     JSON.stringify(state.forecast.world) === JSON.stringify(world) &&
     state.forecast.goal === goal &&
     state.forecast.known.join() === known.join()
@@ -143,6 +145,17 @@ export async function runOps(
   const prepared =
     cached || (await forecastOps(state, world, goal, keys)).forecast!;
   const { plans, procedure, decision } = prepared;
+  let warning: string | undefined;
+  if (decision.provider === "local") {
+    if (hotLoop && controller === "jev") {
+      if (!keys.RIVER_RELAY_URL || !keys.RIVER_RELAY_TOKEN)
+        throw Error(
+          "Jev credits are exhausted and River is not connected. Restore TypeSafe credits or disable the dispatch controller.",
+        );
+      controller = "river";
+    }
+    warning = `Jev credits exhausted. Simulator planning uses fixed delivery priorities${hotLoop ? "; River handles dispatch corrections." : ". Dispatch controller is disabled."}`;
+  }
   const forecast = plans.find((p) => p.policy === decision.choice)!;
   const overrides: Record<string, string> = {},
     decisions: NonNullable<OpsRun["decisions"]> = [];
@@ -156,20 +169,36 @@ export async function runOps(
         false,
         overrides,
       ).visits[i];
-      const selected =
-        controller === "river"
-          ? await riverDispatch(keys, world, plan.visits[i])
-          : {
-              ...(await dispatchDecision(
-                keys.TYPESAFE_API_KEY,
-                goal,
-                world,
-                predicted,
-                completedBeforeDispatch(plan, i),
-                relationships,
-              )),
-              provider: "jev" as const,
-            };
+      let selected: Omit<NonNullable<OpsRun["decisions"]>[number], "job">;
+      if (controller === "river")
+        selected = await riverDispatch(keys, world, plan.visits[i]);
+      else {
+        try {
+          selected = {
+            ...(await dispatchDecision(
+              keys.TYPESAFE_API_KEY,
+              goal,
+              world,
+              predicted,
+              completedBeforeDispatch(plan, i),
+              relationships,
+            )),
+            provider: "jev",
+          };
+        } catch (e) {
+          if (
+            !(e instanceof JevUnavailable) ||
+            e.status !== 402 ||
+            !keys.RIVER_RELAY_URL ||
+            !keys.RIVER_RELAY_TOKEN
+          )
+            throw e;
+          controller = "river";
+          warning =
+            "Jev dispatch credits exhausted. River handled this and subsequent corrections; the recorded plan retains its original provider.";
+          selected = await riverDispatch(keys, world, plan.visits[i]);
+        }
+      }
       overrides[predicted.jobId] = selected.action;
       plan = simulate(world, decision.choice, known, true, overrides);
       decisions.push({ job: predicted.jobId, ...selected });
@@ -177,6 +206,7 @@ export async function runOps(
   const previous = state.history.at(-1)?.plan;
   const run: OpsRun = {
     controller: hotLoop ? controller : "none",
+    warning,
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
     goal,

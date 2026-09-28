@@ -134,6 +134,55 @@ export async function rememberRelationships(
     throw new Error("GBrain did not confirm the experiments.");
   return recallRelationships(key, id);
 }
+export class JevUnavailable extends Error {
+  constructor(public status: number) {
+    super(
+      status === 402
+        ? "Jev has no available API credits. Use River for dispatch or restore TypeSafe credits."
+        : `Jev HTTP ${status}`,
+    );
+  }
+}
+export function chooseLocalPlan(plans: Plan[]): Decision {
+  const best = [...plans].sort(
+    (a, b) => b.score - a.score || a.minutes - b.minutes || a.energy - b.energy,
+  )[0];
+  if (!best) throw Error("No plans available.");
+  return {
+    provider: "local",
+    model: "Simulator planner",
+    choice: best.policy,
+    confidence: null,
+    probabilities: {},
+    inputTokens: 0,
+    latencyMs: 0,
+    reason: `Jev has no API credits. The simulator selected ${best.name.toLowerCase()} using its fixed delivery priorities; custom goal wording was not interpreted.`,
+    concern: "TypeSafe API credits exhausted",
+  };
+}
+export async function choosePlan(
+  key: string,
+  goal: string,
+  world: OpsWorld,
+  plans: Plan[],
+  relationships: Relationship[],
+  procedure: unknown,
+): Promise<Decision> {
+  try {
+    return await choosePlanWithJev(
+      key,
+      goal,
+      world,
+      plans,
+      relationships,
+      procedure,
+    );
+  } catch (e) {
+    if (e instanceof JevUnavailable && e.status === 402)
+      return chooseLocalPlan(plans);
+    throw e;
+  }
+}
 export async function jev(
   key: string,
   state: unknown,
@@ -150,11 +199,11 @@ export async function jev(
     redirect: "manual",
     signal: AbortSignal.timeout(12000),
   });
-  if (!r.ok) throw new Error(`Jev HTTP ${r.status}`);
+  if (!r.ok) throw new JevUnavailable(r.status);
   const data = (await r.json()) as any;
   return { ...data, latencyMs: Date.now() - start };
 }
-export async function choosePlan(
+async function choosePlanWithJev(
   key: string,
   goal: string,
   world: OpsWorld,

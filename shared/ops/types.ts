@@ -91,6 +91,7 @@ export interface Decision {
   focus?: string;
 }
 export interface OpsRun {
+  warning?: string;
   controller?: "jev" | "river" | "none";
   id: string;
   createdAt: string;

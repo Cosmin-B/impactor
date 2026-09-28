@@ -28,7 +28,7 @@ class Handler(BaseHTTPRequestHandler):
    if not isinstance(state['planned_route'],list) or len(state['planned_route'])>20 or any(not isinstance(x,str) or len(x)>40 for x in state['planned_route']):raise ValueError('Invalid route')
    if not isinstance(state['normal_reason'],str) or len(state['normal_reason'])>600:raise ValueError('Invalid reason')
   except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'Invalid dispatch state'})
-  if not LOCK.acquire(blocking=False):return self.reply(429,{'error':'River controller is handling another shift. Retry shortly.'})
+  if not LOCK.acquire(timeout=25):return self.reply(429,{'error':'River controller is handling another shift. Retry shortly.'})
   try:
    start=time.monotonic()
    prompt=PREFIX+'\nState: '+json.dumps(state,separators=(',',':'))+'\nAction:'
@@ -41,5 +41,6 @@ class Handler(BaseHTTPRequestHandler):
    print('River inference failed:',type(e).__name__,flush=True)
    self.reply(502,{'error':'River inference failed. No fallback was used.'})
   finally:LOCK.release()
-print('River relay listening on 127.0.0.1:8791; remote inference only',flush=True)
-ThreadingHTTPServer(('127.0.0.1',8791),Handler).serve_forever()
+PORT=int(os.environ.get('RIVER_RELAY_PORT','8791'))
+print(f'River relay listening on 127.0.0.1:{PORT}; remote inference only',flush=True)
+ThreadingHTTPServer(('127.0.0.1',PORT),Handler).serve_forever()

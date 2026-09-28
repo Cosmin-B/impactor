@@ -1375,3 +1375,5 @@
   line-height: 1.6;
   color: var(--op-muted);
 }
+
+.ops-provider-warning { border:1px solid #d9b58c; border-radius:9px; padding:14px 18px; background:#fff3dd; color:#70502e; margin-bottom:18px; font-size:12px; line-height:1.6; }
